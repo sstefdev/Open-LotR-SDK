@@ -9,8 +9,8 @@
     "test": "jest --setupFiles ./jest.setup.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Stefan Stefanović",
+  "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.21.5",
     "@babel/preset-typescript": "^7.21.5",
