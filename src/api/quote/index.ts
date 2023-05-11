@@ -1,4 +1,4 @@
-import { makeRequest } from "@/utils";
+import { makeRequest } from "../../utils";
 import type { QueryParams, APIResponse } from "#/index";
 
 export async function getQuotes(params?: QueryParams) {

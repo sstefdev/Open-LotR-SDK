@@ -29,3 +29,6 @@ yarn-error.log*
 
 # Enviorment Variables
 .env
+
+# Cache
+.cache

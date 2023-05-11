@@ -2,6 +2,18 @@ export declare function getMovies(params?: QueryParams): Promise<Movie[]>;
 
 export declare function getMovieById(id: string): Promise<Movie | null>;
 
+export declare function getMovieQuotes(
+  id: string,
+  params?: QueryParams
+): Promise<APIResponse>;
+
+export declare function getQuotes(params?: QueryParams): Promise<APIResponse>;
+
+export declare function getQuoteById(
+  id: string,
+  params?: QueryParams
+): Promise<APIResponse | null>;
+
 export interface QueryParams {
   page?: number;
   limit?: number;

@@ -2,11 +2,11 @@
   "name": "stefan-stefanovic-sdk",
   "version": "1.0.2",
   "description": "A powerful SDK for accessing information about the Lord of the Rings trilogy through the Lord of the Rings API.",
-  "main": "dist/bundle.js",
+  "main": "dist/index.js",
   "scripts": {
-    "prepare": "webpack --config webpack.config.js",
-    "build": "webpack --config webpack.config.js",
-    "start": "node dist/bundle.js",
+    "prepare": "parcel build src/index.ts --out-dir dist",
+    "build": "parcel build src/index.ts --out-dir dist",
+    "start": "node dist/index.js",
     "test": "jest --setupFiles ./jest.setup.js"
   },
   "keywords": [],
@@ -17,17 +17,14 @@
     "@babel/preset-typescript": "^7.21.5",
     "@types/jest": "^29.5.1",
     "jest": "^29.5.0",
+    "parcel-bundler": "^1.12.5",
     "ts-jest": "^29.1.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.0.4",
-    "webpack": "^5.82.1",
-    "webpack-cli": "^5.1.1"
+    "typescript": "^5.0.4"
   },
   "dependencies": {
     "axios": "^1.4.0",
     "dotenv": "^16.0.3",
-    "fs": "^0.0.1-security",
-    "os-browserify": "^0.3.0",
     "path": "^0.12.7",
     "ts-loader": "^9.4.2"
   },
