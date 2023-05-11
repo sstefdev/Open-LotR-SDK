@@ -1,7 +1,7 @@
 {
   "name": "stefan-stefanovic-sdk",
   "version": "1.0.0",
-  "description": "",
+  "description": "A powerful SDK for accessing information about the Lord of the Rings trilogy through the Lord of the Rings API.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -32,5 +32,9 @@
   },
   "_moduleAliases": {
     "@": "./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sstefdev/stefan-stefanovic-sdk.git"
   }
 }
