@@ -62,10 +62,12 @@ import {
 
 The Lord of the Rings SDK can utilize the following environment variables:
 
-- LOTR_API_BASE_URL: The base URL of the Lord of the Rings API. Default: https://the-one-api.dev/v2/
-- LOTR_API_KEY: Your API key for accessing the Lord of the Rings API. Default: YXrt5Rys2Wu_iO-B3-yX
+- `LOTR_API_BASE_URL`: The base URL of the Lord of the Rings API. Default: https://the-one-api.dev/v2/
+- `LOTR_API_KEY`: Your API key for accessing the Lord of the Rings API. Default: YXrt5Rys2Wu_iO-B3-yX
 
 You can set these environment variables in your development environment or use a library like dotenv to load them from a .env file.
+
+Follow this [link](https://the-one-api.dev/documentation) to learn more about the API that is used in the SDK and how to create your own API key.
 
 ## SDK Design
 
