@@ -16,7 +16,7 @@ This SDK makes it easy for developers to consume information about the trilogy f
 
 The Lord of the Rings SDK can be installed using your favorite package manager. Run the following command:
 
-`npm install lord-of-the-rings-sdk`
+`npm install stefan-stefanovic-sdk`
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ import {
   getMovieQuotes,
   getQuotes,
   getQuoteById,
-} from "lord-of-the-rings-sdk";
+} from "stefan-stefanovic-sdk";
 ```
 
 2. Use the SDK functions to interact with the Lord of the Rings API:
