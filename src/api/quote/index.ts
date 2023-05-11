@@ -1,11 +1,26 @@
-// src/api/quote.ts
+import { makeRequest } from "@/utils";
+import type { QueryParams, APIResponse } from "#/index";
 
-import { makeRequest } from "@/src/utils";
-
-export function getQuotes() {
-  // Implement the logic to fetch a list of quotes
+export async function getQuotes(params?: QueryParams) {
+  try {
+    const response = await makeRequest("quote", {
+      params,
+    });
+    return response.data as APIResponse;
+  } catch (error) {
+    console.error("Failed to fetch quotes:", error);
+    return [];
+  }
 }
 
-export function getQuoteById(id: string) {
-  // Implement the logic to fetch a quote by its ID
+export async function getQuoteById(id: string, params?: QueryParams) {
+  try {
+    const response = await makeRequest(`quote/${id}`, {
+      params,
+    });
+    return response.data as APIResponse;
+  } catch (error) {
+    console.error("Failed to fetch quote by ID:", error);
+    return null;
+  }
 }

@@ -1,4 +1,4 @@
-import type { QueryParams } from "@/index.d.ts";
+import type { QueryParams } from "#/index";
 
 export function addQueryParams(url: string, params?: QueryParams) {
   if (params) {
@@ -103,4 +103,6 @@ export function addQueryParams(url: string, params?: QueryParams) {
 
     return url;
   }
+
+  return url;
 }

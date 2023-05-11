@@ -6,13 +6,18 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "node dist/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --setupFiles ./jest.setup.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/jest": "^29.5.1",
     "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.4",
     "webpack": "^5.82.1",
     "webpack-cli": "^5.1.1"
@@ -24,5 +29,8 @@
     "os-browserify": "^0.3.0",
     "path": "^0.12.7",
     "ts-loader": "^9.4.2"
+  },
+  "_moduleAliases": {
+    "@": "./"
   }
 }

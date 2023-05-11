@@ -11,7 +11,8 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "src/"),
+      "*": path.resolve(__dirname, "./"),
       axios: path.resolve(__dirname, "node_modules/axios"),
     },
     fallback: {

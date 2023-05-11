@@ -22,6 +22,15 @@ export interface Filters {
   greaterThanOrEqual?: Record<string, number>;
 }
 
+export interface APIResponse {
+  docs: (Movie | Quote)[];
+  total: number;
+  limit: number;
+  offset: number;
+  page: number;
+  pages: number;
+}
+
 export interface Movie {
   _id: string;
   name: string;
@@ -31,4 +40,11 @@ export interface Movie {
   academyAwardNominations: number;
   academyAwardWins: number;
   rottenTomatoesScore: number;
+}
+
+export interface Quote {
+  _id: string;
+  dialog: string;
+  movie: string;
+  character: string;
 }

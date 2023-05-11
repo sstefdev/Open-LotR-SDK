@@ -1,18 +1,38 @@
-import { makeRequest } from "@/src/utils";
-import type { QueryParams, Movie } from "@/index";
+import { makeRequest } from "@/utils";
+import type { QueryParams, APIResponse } from "#/index";
 
 export async function getMovies(params?: QueryParams) {
-  const response = await makeRequest("movie", {
-    params,
-  });
-
-  return response.data as Movie[];
+  try {
+    const response = await makeRequest("movie", {
+      params,
+    });
+    return response.data as APIResponse;
+  } catch (error) {
+    console.error("Failed to fetch movies:", error);
+    return null;
+  }
 }
 
-export function getMovieById(id: string) {
-  // Implement the logic to fetch a movie by its ID
+export async function getMovieById(id: string, params?: QueryParams) {
+  try {
+    const response = await makeRequest(`movie/${id}`, {
+      params,
+    });
+    return response.data as APIResponse;
+  } catch (error) {
+    console.error("Failed to fetch movie by ID:", error);
+    return null;
+  }
 }
 
-export function getMovieQuotes(id: string) {
-  // Implement the logic to fetch quotes for a specific movie
+export async function getMovieQuotes(id: string, params?: QueryParams) {
+  try {
+    const response = await makeRequest(`movie/${id}/quote`, {
+      params,
+    });
+    return response.data as APIResponse;
+  } catch (error) {
+    console.error("Failed to fetch movie quotes:", error);
+    return [];
+  }
 }
