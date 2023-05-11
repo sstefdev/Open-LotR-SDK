@@ -1,9 +1,10 @@
 {
   "name": "stefan-stefanovic-sdk",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A powerful SDK for accessing information about the Lord of the Rings trilogy through the Lord of the Rings API.",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
+    "prepare": "webpack --config webpack.config.js",
     "build": "webpack --config webpack.config.js",
     "start": "node dist/bundle.js",
     "test": "jest --setupFiles ./jest.setup.js"
