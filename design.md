@@ -15,11 +15,11 @@ The SDK follows a modular architecture to enhance maintainability and extensibil
 
 The Lord of the Rings SDK provides the following functions to interact with the Lord of the Rings API:
 
-- `getMovies(params?: QueryParams): Promise<Response>`: Fetches a list of movies. It accepts optional query parameters for pagination, filtering, and sorting.
-- `getMovieById(id: string, params?: QueryParams): Promise<Movie | null>`: Retrieves a specific movie by its ID.
-- `getMovieQuotes(id: string, params?: QueryParams): Promise<Response>`: Fetches quotes for a specific movie by its ID.
-- `getQuotes(params?: QueryParams): Promise<Response>`: Retrieves a list of all quotes.
-- `getQuoteById(id: string, params?: QueryParams): Promise<Quote | null>`: Retrieves a specific quote by its ID.
+- `getMovies(params?: QueryParams): Promise<APIResponse<Movie>>`: Fetches a list of movies. It accepts optional query parameters for pagination, filtering, and sorting.
+- `getMovieById(id: string): Promise<APIResponse<Movie> | null>`: Retrieves a specific movie by its ID.
+- `getMovieQuotes(id: string,params?: QueryParams): Promise<APIResponse<Movie>>;`: Fetches quotes for a specific movie by its ID.
+- `getQuotes(params?: QueryParams): Promise<APIResponse<Quote>>;`: Retrieves a list of all quotes.
+- `getQuoteById(id: string): Promise<APIResponse<Quote> | null>`: Retrieves a specific quote by its ID.
 
 ## Error Handling
 

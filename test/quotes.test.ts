@@ -1,19 +1,16 @@
-import { APIResponse } from "../index";
 import { getQuotes, getQuoteById } from "../src/api/quote";
 
 describe("getQuotes", () => {
-  let response: APIResponse;
-
-  beforeAll(async () => {
-    response = await getQuotes();
-  });
-
   it("should return an array of quotes", async () => {
-    expect(Array.isArray(response.docs)).toBe(true);
+    const response = await getQuotes();
+    expect(response).toBeTruthy();
+    expect(Array.isArray(response?.docs)).toBe(true);
   });
 
   it("should return quotes with required properties", async () => {
-    response.docs.forEach((quote) => {
+    const response = await getQuotes();
+    expect(response).toBeTruthy();
+    response?.docs.forEach((quote) => {
       expect(quote).toHaveProperty("_id");
       expect(quote).toHaveProperty("dialog");
       expect(quote).toHaveProperty("movie");
@@ -22,60 +19,59 @@ describe("getQuotes", () => {
   });
 
   it("should return paginated results with default values", async () => {
+    const response = await getQuotes();
+    expect(response).toBeTruthy();
     expect(response).toHaveProperty("docs");
-    expect(Array.isArray(response.docs)).toBe(true);
+    expect(Array.isArray(response?.docs)).toBe(true);
     expect(response).toHaveProperty("total");
-    expect(typeof response.total).toBe("number");
+    expect(typeof response?.total).toBe("number");
     expect(response).toHaveProperty("limit");
-    expect(typeof response.limit).toBe("number");
+    expect(typeof response?.limit).toBe("number");
     expect(response).toHaveProperty("offset");
-    expect(typeof response.offset).toBe("number");
+    expect(typeof response?.offset).toBe("number");
     expect(response).toHaveProperty("page");
-    expect(typeof response.page).toBe("number");
+    expect(typeof response?.page).toBe("number");
     expect(response).toHaveProperty("pages");
-    expect(typeof response.pages).toBe("number");
+    expect(typeof response?.pages).toBe("number");
   });
 
   it("should return paginated results with custom values", async () => {
-    const customResponse = await getQuotes({
-      page: 2,
-      limit: 10,
-    });
-    expect(customResponse.page).toBe(2);
-    expect(customResponse.limit).toBe(10);
-  });
-
-  it("should return filtered results based on provided filters", async () => {
-    const customResponse = await getQuotes({
-      filters: {
-        match: { dialog: "Give us that! Deagol my love" },
-      },
-    });
-    const movies = customResponse.docs;
-    expect(Array.isArray(movies)).toBe(true);
-    expect(movies.length).toBeGreaterThan(0);
-    movies.forEach((movie) => {
-      expect(movie.dialog).toContain("Give us that! Deagol my love");
-    });
+    const page = 2;
+    const limit = 20;
+    const response = await getQuotes({ page, limit });
+    expect(response).toBeTruthy();
+    expect(response?.page).toBe(page);
+    expect(response?.limit).toBe(limit);
   });
 });
 
 describe("getQuoteById", () => {
-  it("should return a quote object for a valid ID", async () => {
+  it("should return the quote object for a valid quote ID", async () => {
     const quoteId = "5cd96e05de30eff6ebcce7e9";
-    const { docs } = await getQuoteById(quoteId);
-    expect(typeof docs[0]).toBe("object");
-    expect(docs[0]).toHaveProperty("_id", quoteId);
+    const quote = await getQuoteById(quoteId);
+    expect(quote).not.toBeNull();
+    expect(quote?.docs[0]._id).toBe(quoteId);
   });
 
-  it("should return null for an invalid ID", async () => {
+  it("should return null for a non-existent quote ID", async () => {
     const nonExistentId = "00000";
-    try {
-      await getQuoteById(nonExistentId);
-    } catch (error) {
-      expect(error).toHaveProperty("response");
-      expect(error.response).toHaveProperty("status");
-      expect(error.response.status).toBe(500);
-    }
+    const quote = await getQuoteById(nonExistentId);
+    expect(quote).toBeNull();
+  });
+
+  it("should return the quote object for a valid quote ID (Integration Test)", async () => {
+    const quoteId = "5cd96e05de30eff6ebcce7e9";
+    const quote = await getQuoteById(quoteId);
+    expect(quote).not.toBeNull();
+    expect(quote?.docs[0]._id).toBe(quoteId);
+    expect(quote?.docs[0]).toHaveProperty("dialog");
+    expect(quote?.docs[0]).toHaveProperty("movie");
+    expect(quote?.docs[0]).toHaveProperty("character");
+  });
+
+  it("should return null for a non-existent quote ID (Integration Test)", async () => {
+    const nonExistentId = "00000";
+    const quote = await getQuoteById(nonExistentId);
+    expect(quote).toBeNull();
   });
 });

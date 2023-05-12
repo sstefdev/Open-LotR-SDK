@@ -31,7 +31,7 @@ export async function getQuoteById(
     });
 
     if (response.status === 200 && response.data) {
-      return response.data.docs[0];
+      return response.data;
     } else {
       console.error("Failed to fetch quote by ID: Invalid response");
       return null;

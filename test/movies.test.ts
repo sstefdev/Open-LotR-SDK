@@ -2,7 +2,7 @@ import { getMovies, getMovieById, getMovieQuotes } from "../src/api/movie";
 import { APIResponse, Movie, Quote } from "../index";
 
 describe("getMovies Integration Tests", () => {
-  let movies: APIResponse | null;
+  let movies: APIResponse<Movie> | null;
 
   beforeAll(async () => {
     movies = await getMovies();
