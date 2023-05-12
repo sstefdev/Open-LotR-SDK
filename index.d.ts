@@ -4,7 +4,9 @@
  * @param params - Optional query parameters for pagination, sorting, and filtering.
  * @returns A promise that resolves to an array of movies.
  */
-export declare function getMovies(params?: QueryParams): Promise<Movie[]>;
+export declare function getMovies(
+  params?: QueryParams
+): Promise<APIResponse<Movie>>;
 
 /**
  * Retrieves a movie by its ID.
@@ -12,7 +14,9 @@ export declare function getMovies(params?: QueryParams): Promise<Movie[]>;
  * @param id - The ID of the movie.
  * @returns A promise that resolves to the movie object, or null if the movie is not found.
  */
-export declare function getMovieById(id: string): Promise<Movie | null>;
+export declare function getMovieById(
+  id: string
+): Promise<APIResponse<Movie> | null>;
 
 /**
  * Retrieves quotes for a specific movie.
@@ -24,7 +28,7 @@ export declare function getMovieById(id: string): Promise<Movie | null>;
 export declare function getMovieQuotes(
   id: string,
   params?: QueryParams
-): Promise<APIResponse>;
+): Promise<APIResponse<Movie>>;
 
 /**
  * Retrieves a list of quotes.
@@ -32,7 +36,9 @@ export declare function getMovieQuotes(
  * @param params - Optional query parameters for pagination, sorting, and filtering.
  * @returns A promise that resolves to the API response object containing the quotes.
  */
-export declare function getQuotes(params?: QueryParams): Promise<APIResponse>;
+export declare function getQuotes(
+  params?: QueryParams
+): Promise<APIResponse<Quote>>;
 
 /**
  * Retrieves a quote by its ID.
@@ -40,7 +46,9 @@ export declare function getQuotes(params?: QueryParams): Promise<APIResponse>;
  * @param id - The ID of the quote.
  * @returns A promise that resolves to the quote object, or null if the quote is not found.
  */
-export declare function getQuoteById(id: string): Promise<APIResponse | null>;
+export declare function getQuoteById(
+  id: string
+): Promise<APIResponse<Quote> | null>;
 
 /**
  * Query parameters for pagination, sorting, and filtering.
@@ -71,8 +79,8 @@ export interface Filters {
 /**
  * API response object.
  */
-export interface APIResponse {
-  docs: (Movie | Quote)[];
+export interface APIResponse<T> {
+  docs: T[];
   total: number;
   limit: number;
   offset: number;
