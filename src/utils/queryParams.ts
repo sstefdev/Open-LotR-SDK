@@ -40,13 +40,13 @@ export function addQueryParams(url: string, params?: QueryParams) {
 
       if (match) {
         for (const [key, value] of Object.entries(match)) {
-          queryParams.append(key, value);
+          queryParams.append(key, value.toString());
         }
       }
 
       if (negateMatch) {
         for (const [key, value] of Object.entries(negateMatch)) {
-          queryParams.append(`${key}!`, value);
+          queryParams.append(`${key}!`, value.toString());
         }
       }
 

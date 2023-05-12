@@ -2,10 +2,14 @@
 
 This SDK makes it easy for developers to consume information about the trilogy from an existing Lord of the Rings API.
 
+Follow this [link](https://the-one-api.dev/documentation) to learn more about the API that is used in the SDK and how to create your own API key.
+
 ## Table of Content:
 
 - [Installation](#installation)
 - [Getting Started](#getting-started)
+- [Filtering, sorting and pagination](#filtering-sorting-and-pagination)
+- [Rate limit](#rate-limit)
 - [Environment Variables](#environment-variables)
 - [SDK Design](#sdk-design)
 - [Testing](#testing)
@@ -58,6 +62,53 @@ import {
 
 3. Handle the responses and errors according to your application's requirements.
 
+## Filtering, sorting and pagination
+
+### Filtering
+
+To filter the data based on specific criteria, you can include the filters parameter when calling the SDK functions. The filters parameter accepts an object with various filtering options. Here's an example:
+
+```
+const filters = {
+  match: {
+    name: "The Lord of the Rings",
+    academyAwardWins: "4",
+  },
+  lessThan: {
+    budgetInMillions: 100,
+  },
+};
+const movies = await getMovies({ filters });
+```
+
+### Sorting
+
+To sort the data in a specific order, you can include the sort parameter when calling the SDK functions. The sort parameter accepts a string that specifies the field to sort by and the sorting order. Here's an example:
+
+```
+const sort = "name:asc";
+const movies = await getMovies({ sort });
+```
+
+### Pagination
+
+To paginate through the data, you can include the page, limit, and offset parameters when calling the SDK functions. The page parameter specifies the page number, the limit parameter sets the number of items per page, and the offset parameter sets the number of items to skip. Here's an example:
+
+```
+const page = 2;
+const limit = 10;
+const offset = 1;
+const movies = await getMovies({ page, limit, offset });
+```
+
+## Rate limit
+
+The Lord of the Rings API imposes a rate limit of 100 requests per 10 minutes for the SDK. This means that you should avoid exceeding this limit to ensure smooth and uninterrupted access to the API.
+
+If you make more than 100 requests within a 10-minute window, you may receive an error response indicating that you have exceeded the rate limit. To avoid this, it's recommended to manage your requests responsibly and consider implementing appropriate measures such as caching or throttling mechanisms.
+
+Please note that the rate limit is subject to change, and it's important to check the official API documentation for any updates or modifications to the rate limit policy.
+
 ## Environment Variables
 
 The Lord of the Rings SDK can utilize the following environment variables:
@@ -66,8 +117,6 @@ The Lord of the Rings SDK can utilize the following environment variables:
 - `LOTR_API_KEY`: Your API key for accessing the Lord of the Rings API. Default: YXrt5Rys2Wu_iO-B3-yX
 
 You can set these environment variables in your development environment or use a library like dotenv to load them from a .env file.
-
-Follow this [link](https://the-one-api.dev/documentation) to learn more about the API that is used in the SDK and how to create your own API key.
 
 ## SDK Design
 
